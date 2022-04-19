@@ -1,5 +1,4 @@
 import re
-
 import mechanize
 
 class BruteLogin:
@@ -13,6 +12,7 @@ class BruteLogin:
             ('User-agent', 'Mozilla/5.0 (X11;U;Linux 2.4.2.-2 i586; en-us;m18) Gecko/200010131 Netscape6/6.01')
         ]
         self.br.addheaders = self.useragent
+
 
     def fill_form(self, password):
         try:
@@ -31,9 +31,6 @@ class BruteLogin:
         except Exception as e:
             print(e)
 
-    # def check_results(self):
-    #     self.br.open(self.url)
-    #     print(self.br.response().read())
 
     def submit_form(self, password):
         self.response = self.br.submit()
@@ -42,6 +39,6 @@ class BruteLogin:
         password = password.strip()
         if results == None:
             print(f"{self.username}:{password} found!")
-            return True
+            return True # after return, break on True (successful login)
         else:
             print(f"{self.username}:{password} - Bad Password")

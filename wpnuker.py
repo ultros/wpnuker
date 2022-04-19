@@ -18,5 +18,3 @@ def brute_wp_login():
 
 
 brute_wp_login()
-# figure out which text to check after successful login to verify login
-# create user
