@@ -3,7 +3,7 @@ import tools.wpversioncheck
 
 
 if __name__ == "__main__":
-    url = "https://cybertutorials.org"
+    url = "https://cybertutorials.org/wp-admin"
     username = ""
     wordlist = ""
 
@@ -22,4 +22,5 @@ def check_version():
     vc = tools.wpversioncheck.GetVersion(url)
     print(vc.locate_version())
 
-check_version()
+#check_version()
+brute_wp_login()
