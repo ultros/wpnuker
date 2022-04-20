@@ -1,8 +1,9 @@
 import tools.wplogin
+import tools.wpversioncheck
 
 
 if __name__ == "__main__":
-    url = ""
+    url = "https://cybertutorials.org"
     username = ""
     wordlist = ""
 
@@ -17,4 +18,8 @@ def brute_wp_login():
                 break # break if True (password found!)
 
 
-brute_wp_login()
+def check_version():
+    vc = tools.wpversioncheck.GetVersion(url)
+    print(vc.locate_version())
+
+check_version()
