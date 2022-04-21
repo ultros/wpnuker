@@ -1,12 +1,18 @@
 import tools.wplogin
 import tools.wpversioncheck
+import tools.wpcomment
 
 
 if __name__ == "__main__":
+    # need to argparse
     url = "https://cybertutorials.org/wp-admin"
     username = ""
     wordlist = ""
 
+    site_to_comment = "https://www.cybertutorials.org/2022/python-wpnuker-a-collection-of-wordpress-pentesting-tools" \
+                      "/#comment-72 "
+    site_to_advertise = ""
+    site_anchor_text = ""
 
 def brute_wp_login():
     bl = tools.wplogin.BruteLogin(username, wordlist, url)
@@ -22,5 +28,10 @@ def check_version():
     vc = tools.wpversioncheck.GetVersion(url)
     print(vc.locate_version())
 
+def post_comment():
+    wpc = tools.wpcomment.WPComment(site_to_comment, site_to_advertise, site_anchor_text)
+    wpc.post_comment()
+
 #check_version()
-brute_wp_login()
+#brute_wp_login()
+post_comment()
