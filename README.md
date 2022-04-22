@@ -14,8 +14,8 @@ admin:a - Bad Password
  
 
 Example:  
-$ python3 wpnuker.py comment --target "https://www.cybertutorials.org/2022/python-wpnuker-a-collection-of-wordpress-pentesting-tools" --advertise "google.com" --anchor "test"                                                    2 ⨯
-https://www.cybertutorials.org/2022/python-wpnuker-a-collection-of-wordpress-pentesting-tools/#comment-72  - Comment is in the moderation queue.  
+$ python3 wpnuker.py comment --target "https://www.cybertutorials.org/2022/python-wpnuker-a-collection-of-wordpress-pentesting-tools" --advertise "google.com" --anchor "test"  
+Comment is in the moderation queue.  
 
 Example:  
 $ python3 wpnuker.py plugins --url https://cybertutorials.org  
