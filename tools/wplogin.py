@@ -38,7 +38,6 @@ class BruteLogin:
         match = re.search(f"<strong>ERROR</strong>", str(page_content))
         password = password.strip()
 
-        #print(results)
         if match:
             print(f"{self.username}:{password} - Bad Password")
         else:

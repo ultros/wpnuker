@@ -14,11 +14,6 @@ class FindPlugins:
         self.br.addheaders = self.useragent
 
     def get_plugins(self):
-        # response = requests.get(self.url)
-        # print(response.text)
-        # driver = webdriver.Chrome(executable_path="./chromedriver")
-        # driver.get(self.url)
-
         self.br.open(self.url)
         response = self.br.response().read()
 
