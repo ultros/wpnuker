@@ -22,15 +22,16 @@ class FindPlugins:
         self.br.open(self.url)
         response = self.br.response().read()
 
-        plugins = re.findall("plugins/.*?/", str(response))
-        # need to parse version number
-        dupe = ""
+        plugins = re.findall("wp-content/plugins/.*?/.*?\'", str(response))
+        plugin_list = []
         for plugin in plugins:
-            if plugin == dupe:
-                pass
-            else:
-                print(plugin)
-            dupe = plugin
+            parsed_string = plugin[19:]
+            version = parsed_string.split("?")
+            parsed_plugin = parsed_string.split("/")
+            full_plugin = (f"{parsed_plugin[0]} {version[1][:-2]}")
+            plugin_list.append(full_plugin)
+        return set(plugin_list)
+
 
 fp = FindPlugins('https://www.cybertutorials.org/2022/python-wpnuker-a-collection-of-wordpress-pentesting-tools/')
-fp.get_plugins()
+print(fp.get_plugins())
