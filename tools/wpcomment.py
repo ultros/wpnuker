@@ -70,6 +70,7 @@ class WPComment:
                 print(f"{self.site_to_comment} - Comment has autoposted.")
                 return True
 
+
             return True
         except Exception as e:
             print(self.site_to_comment, e)
