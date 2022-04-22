@@ -1,11 +1,12 @@
 import tools.wplogin
 import tools.wpversioncheck
 import tools.wpcomment
+import tools.wpfindplugins
 
 
 if __name__ == "__main__":
     # need to argparse
-    url = "https://cybertutorials.org/wp-admin"
+    url = "https://cybertutorials.org/"
     username = ""
     wordlist = ""
 
@@ -32,6 +33,11 @@ def post_comment():
     wpc = tools.wpcomment.WPComment(site_to_comment, site_to_advertise, site_anchor_text)
     wpc.post_comment()
 
+def get_plugins():
+    gp = tools.wpfindplugins.FindPlugins(url)
+    print(gp.get_plugins())
+
 #check_version()
 #brute_wp_login()
-post_comment()
+#post_comment()
+get_plugins()
