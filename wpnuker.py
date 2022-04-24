@@ -2,6 +2,7 @@ import tools.wplogin
 import tools.wpversioncheck
 import tools.wpcomment
 import tools.wpfindplugins
+import tools.wpgetip
 import argparse
 
 
@@ -30,6 +31,8 @@ def get_plugins(url):
     for line in list:
         print(line)
 
+def get_ip_address(url):
+    print(tools.wpgetip.get_ip(url))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -38,6 +41,9 @@ if __name__ == "__main__":
     comment = subparser.add_parser('comment')
     login = subparser.add_parser('brutelogin')
     plugins = subparser.add_parser('plugins')
+    getip = subparser.add_parser(('getip'))
+
+    getip.add_argument('--url', type=str, required=True)
 
     version.add_argument('--url', type=str, required=True)
 
@@ -64,3 +70,6 @@ if __name__ == "__main__":
 
     if args.command == 'plugins':
         get_plugins(args.url)
+
+    if args.command == 'getip':
+        get_ip_address(args.url)
