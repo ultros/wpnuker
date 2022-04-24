@@ -6,5 +6,3 @@ def get_ip(url):
         return socket.gethostbyname(url)
     else:
         return "Remove protocol (http/https) from URL and retry."
-
-

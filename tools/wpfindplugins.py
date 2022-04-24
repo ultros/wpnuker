@@ -3,6 +3,7 @@ import mechanize
 from selenium import webdriver
 import requests
 
+
 class FindPlugins:
     def __init__(self, url):
         self.url = url

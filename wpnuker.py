@@ -16,14 +16,15 @@ def brute_wp_login(username, wordlist, url):
                 break
 
 
-
 def check_version(url):
     vc = tools.wpversioncheck.GetVersion(url)
     print(vc.locate_version())
 
+
 def post_comment(target, advertise, anchor):
     wpc = tools.wpcomment.WPComment(target, advertise, anchor)
     wpc.post_comment()
+
 
 def get_plugins(url):
     gp = tools.wpfindplugins.FindPlugins(url)
@@ -31,10 +32,12 @@ def get_plugins(url):
     for line in list:
         print(line)
 
+
 def get_ip_address(url):
     print(tools.wpgetip.get_ip(url))
 
-if __name__ == "__main__":
+
+def main():
     parser = argparse.ArgumentParser()
     subparser = parser.add_subparsers(dest='command')
     version = subparser.add_parser('version')
@@ -73,3 +76,7 @@ if __name__ == "__main__":
 
     if args.command == 'getip':
         get_ip_address(args.url)
+
+
+if __name__ == "__main__":
+    main()

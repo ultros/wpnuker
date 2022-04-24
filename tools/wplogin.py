@@ -1,6 +1,7 @@
 import re
 import mechanize
 
+
 class BruteLogin:
     def __init__(self, username, wordlist, url):
         self.username = username
@@ -12,7 +13,6 @@ class BruteLogin:
             ('User-agent', 'Mozilla/5.0 (X11;U;Linux 2.4.2.-2 i586; en-us;m18) Gecko/200010131 Netscape6/6.01')
         ]
         self.br.addheaders = self.useragent
-
 
     def fill_form(self, password):
         try:
@@ -30,7 +30,6 @@ class BruteLogin:
             self.br.form['pwd'] = password
         except Exception as e:
             print(e)
-
 
     def submit_form(self, password):
         self.response = self.br.submit()
