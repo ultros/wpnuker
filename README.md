@@ -16,3 +16,6 @@ simple-sitemap ver=3.5.5
 revslider ver=6.5.15  
 fusion-builder  
 litespeed-cache ver=4.6  
+
+$ python3 wpnuker.py getip --url cybertutorials.org  
+173.236.172.84  
