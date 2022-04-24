@@ -15,7 +15,5 @@ class GetVersion:
     def locate_version(self):
         self.br.open(self.url)
         response = self.br.response().read()
-        results = re.findall(f'content="WordPress.*?"', str(response))
-        for link in results:
-            return link[9:-1]
-
+        results = re.search(f'content="WordPress.*?"', str(response))
+        return results.group(0)[9:-1]
