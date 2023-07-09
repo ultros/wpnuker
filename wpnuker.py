@@ -38,7 +38,12 @@ def get_plugins(url):
 
 
 def get_ip_address(url):
-    print(Core.wpgetip.get_ip(url))
+    message = Core.wpgetip.get_ip(url)
+
+    if message:
+        print(message)
+    else:
+        print(f"[!] Could not determine the IP for: {url}")
 
 
 def main():
