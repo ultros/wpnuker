@@ -4,7 +4,7 @@ from faker import Faker
 
 
 class WPComment:
-    def __init__(self, site_to_comment, site_to_advertise, site_anchor_text):
+    def __init__(self, site_to_comment: str, site_to_advertise: str, site_anchor_text: str) -> None:
         self.fake = Faker()
         self.br = mechanize.Browser()
         self.br.set_handle_robots(False)
@@ -16,22 +16,22 @@ class WPComment:
         self.site_to_advertise = site_to_advertise
         self.site_anchor_text = site_anchor_text
 
-    def get_first_name(self):
+    def get_first_name(self) -> str:
         return self.fake.first_name()
 
-    def get_last_name(self):
+    def get_last_name(self) -> str:
         return self.fake.last_name()
 
-    def get_comment(self, hyperlink, anchor_text=""):
+    def get_comment(self, hyperlink: str, anchor_text="") -> str:
         if hyperlink and anchor_text:
             return f'<a href="{hyperlink}">{anchor_text}</a> - {self.fake.text()}'
         else:
             return self.fake.text()
 
-    def get_email(self):
+    def get_email(self) -> str:
         return self.fake.email()
 
-    def post_comment(self):
+    def post_comment(self) -> None:
         try:
             if self.site_to_comment[:4] != "http":
                 self.br.open(f"http://{self.site_to_comment}", timeout=20)
