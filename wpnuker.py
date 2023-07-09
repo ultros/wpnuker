@@ -1,13 +1,13 @@
-import tools.wplogin
-import tools.wpversioncheck
-import tools.wpcomment
-import tools.wpfindplugins
-import tools.wpgetip
+import Core.wplogin
+import Core.wpversioncheck
+import Core.wpcomment
+import Core.wpfindplugins
+import Core.wpgetip
 import argparse
 
 
 def brute_wp_login(username, wordlist, url):
-    bl = tools.wplogin.BruteLogin(username, wordlist, url)
+    bl = Core.wplogin.BruteLogin(username, wordlist, url)
     with open(wordlist, 'r') as file:
         for line in file:
             stripped_line = line.strip('')
@@ -17,24 +17,28 @@ def brute_wp_login(username, wordlist, url):
 
 
 def check_version(url):
-    vc = tools.wpversioncheck.GetVersion(url)
-    print(vc.locate_version())
+    vc = Core.wpversioncheck.GetVersion(url)
+
+    if vc.locate_version():
+        print(vc.locate_version())
+    else:
+        print(f"[!] Could not determine the version of Wordpress in use.")
 
 
 def post_comment(target, advertise, anchor):
-    wpc = tools.wpcomment.WPComment(target, advertise, anchor)
+    wpc = Core.wpcomment.WPComment(target, advertise, anchor)
     wpc.post_comment()
 
 
 def get_plugins(url):
-    gp = tools.wpfindplugins.FindPlugins(url)
+    gp = Core.wpfindplugins.FindPlugins(url)
     list = gp.get_plugins()
     for line in list:
         print(line)
 
 
 def get_ip_address(url):
-    print(tools.wpgetip.get_ip(url))
+    print(Core.wpgetip.get_ip(url))
 
 
 def main():

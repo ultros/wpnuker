@@ -12,8 +12,12 @@ class GetVersion:
         ]
         self.br.addheaders = self.useragent
 
-    def locate_version(self):
+    def locate_version(self) -> str | None:
         self.br.open(self.url)
         response = self.br.response().read()
         results = re.search(f'content="WordPress.*?"', str(response))
-        return results.group(0)[9:-1]
+
+        if results:
+            return results.group(0)[9:-1]
+
+        return

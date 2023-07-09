@@ -5,7 +5,7 @@ import requests
 
 
 class FindPlugins:
-    def __init__(self, url):
+    def __init__(self, url) -> None:
         self.url = url
         self.br = mechanize.Browser()
         self.br.set_handle_robots(False)
@@ -14,25 +14,22 @@ class FindPlugins:
         ]
         self.br.addheaders = self.useragent
 
-    def get_plugins(self):
+    def get_plugins(self) -> set:
+        plugin_list = []
+
         self.br.open(self.url)
         response = self.br.response().read()
 
         plugins = re.findall("wp-content/plugins/.*?/.*?\'", str(response))
-        plugin_list = []
 
         for plugin in plugins:
             parsed_string = plugin[19:]
             if parsed_string[:14] == "fusion-builder":
                 plugin_list.append(parsed_string[:14])
-                parsed_string = ""
             else:
                 pass
-            version = parsed_string.split("?")
+
             parsed_plugin = parsed_string.split("/")
-            try:
-                full_plugin = (f"{parsed_plugin[0]} {version[1][:-2]}")
-            except Exception as e:
-                pass
-            plugin_list.append(full_plugin)
-        return set(plugin_list)
+            plugin_list.append(parsed_plugin[0])
+
+        return set(plugin_list)  # remove duplicates

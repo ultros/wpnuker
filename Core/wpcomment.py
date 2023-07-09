@@ -65,12 +65,9 @@ class WPComment:
             match = re.search(f"Your comment is awaiting moderation.", str(page_content))
 
             if match:
-                print(f"{self.site_to_comment} - Comment is in the moderation queue.")
+                print(f"[!] {self.site_to_comment} - Comment is in the moderation queue.")
             else:
-                print(f"{self.site_to_comment} - Comment has autoposted.")
-                return True
+                print(f"[+] {self.site_to_comment} - Comment has auto-posted.")
 
-            return True
         except Exception as e:
             print(self.site_to_comment, e)
-            return False
