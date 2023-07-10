@@ -60,14 +60,17 @@ class WPComment:
             except Exception as e:
                 pass
 
-            self.response = self.br.submit()
+            #self.response = self.br.submit()
             page_content = self.br.response().read()
-            match = re.search(f"Your comment is awaiting moderation.", str(page_content))
+            match = re.search("Your comment is awaiting moderation.", str(page_content))
+            match2 = re.search(self.site_to_advertise, str(page_content))
 
             if match:
                 print(f"[!] {self.site_to_comment} - Comment is in the moderation queue.")
-            else:
+            elif match2:
                 print(f"[+] {self.site_to_comment} - Comment has auto-posted.")
+            else:
+                print(f"[!] Failed to post comment.")
 
         except Exception as e:
             print(self.site_to_comment, e)

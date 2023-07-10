@@ -1,7 +1,5 @@
 import re
 import mechanize
-from selenium import webdriver
-import requests
 
 
 class FindPlugins:
