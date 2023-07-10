@@ -34,10 +34,13 @@ class BruteLogin:
     def submit_form(self, password):
         self.response = self.br.submit()
         page_content = self.br.response().read()
-        match = re.search(f"<strong>ERROR</strong>", str(page_content))
+        match = re.search(f"<strong>Error:</strong>", str(page_content))
+        match2 = re.search(f"<strong>ERROR</strong>", str(page_content))
         password = password.strip()
 
         if match:
+            print(f"{self.username}:{password} - Bad Password")
+        elif match2:
             print(f"{self.username}:{password} - Bad Password")
         else:
             print(f"{self.username}:{password} found!")
