@@ -13,11 +13,16 @@ class GetVersion:
         self.br.addheaders = self.useragent
 
     def locate_version(self) -> str | None:
-        self.br.open(self.url)
+        try:
+            self.br.open(self.url)
+        except Exception as e:
+            print(e)
+            return
+
         response = self.br.response().read()
-        results = re.search(f'content="WordPress.*?"', str(response))
+        results = re.search(f'content="WordPress(.*?)"', str(response))
 
         if results:
-            return results.group(0)[9:-1]
-
-        return
+            return results.group(0)
+        else:
+            return

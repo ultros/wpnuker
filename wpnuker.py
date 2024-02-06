@@ -18,9 +18,10 @@ def brute_wp_login(username, wordlist, url):
 
 def check_version(url):
     vc = Core.wpversioncheck.GetVersion(url)
+    response = vc.locate_version()
 
-    if vc.locate_version():
-        print(vc.locate_version())
+    if response:
+        print(response)
     else:
         print(f"[!] Could not determine the version of Wordpress in use.")
 
